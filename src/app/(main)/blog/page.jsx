@@ -1,5 +1,6 @@
 import { BookOpen, Clock, Tag, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import NewsletterForm from '@/Componet/NewsletterForm';
 
 export const metadata = {
   title: 'Latest Blog | Organic Meadow',
@@ -10,7 +11,7 @@ const featured = {
   slug: 'why-organic-matters-2026',
   category: 'Nutrition',
   title: 'Why Organic Matters More Than Ever in 2026',
-  excerpt: 'New research confirms what we have always believed — the nutrient density of certified organic produce is significantly higher than conventionally grown alternatives. Here's what the science says and how to get the most out of every bite.',
+  excerpt: 'New research confirms what we have always believed — the nutrient density of certified organic produce is significantly higher than conventionally grown alternatives. Here\'s what the science says and how to get the most out of every bite.',
   author: 'Clara Mosswood',
   authorImg: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80',
   date: 'July 15, 2026',
@@ -34,7 +35,7 @@ const posts = [
     slug: 'regenerative-farming-explained',
     category: 'Farming',
     title: 'Regenerative Agriculture: What It Is and Why It Matters',
-    excerpt: 'Beyond organic — regenerative farming is the next evolution. We visit one of our partner farms in Vermont to see how they're rebuilding soil health and reversing climate damage one season at a time.',
+    excerpt: 'Beyond organic — regenerative farming is the next evolution. We visit one of our partner farms in Vermont to see how they\'re rebuilding soil health and reversing climate damage one season at a time.',
     author: 'James Hartfield',
     authorImg: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80',
     date: 'July 8, 2026',
@@ -45,7 +46,7 @@ const posts = [
     slug: 'organic-pantry-essentials',
     category: 'Lifestyle',
     title: 'Building an Organic Pantry: Your Complete Starter Guide',
-    excerpt: 'Switching to organic doesn't have to be overwhelming or expensive. Our nutritionist-approved starter list tells you exactly which items to swap first for maximum health impact.',
+    excerpt: 'Switching to organic doesn\'t have to be overwhelming or expensive. Our nutritionist-approved starter list tells you exactly which items to swap first for maximum health impact.',
     author: 'Clara Mosswood',
     authorImg: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80',
     date: 'July 3, 2026',
@@ -67,7 +68,7 @@ const posts = [
     slug: 'gut-health-fiber-guide',
     category: 'Nutrition',
     title: 'The Fiber Revolution: How Organic Vegetables Transform Gut Health',
-    excerpt: 'The gut-brain connection is no longer a theory — it's science. Learn which organic foods are richest in prebiotic fiber and how to build a microbiome-friendly meal plan in just two weeks.',
+    excerpt: 'The gut-brain connection is no longer a theory — it\'s science. Learn which organic foods are richest in prebiotic fiber and how to build a microbiome-friendly meal plan in just two weeks.',
     author: 'Priya Nair',
     authorImg: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=100&q=80',
     date: 'June 22, 2026',
@@ -231,19 +232,7 @@ export default function BlogPage() {
           <p className="text-gray-300 text-sm mb-6 max-w-md mx-auto">
             Subscribe to get weekly recipes, farm stories, and health tips delivered directly to your inbox.
           </p>
-          <form className="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:border-[#98D83E] focus:ring-1 focus:ring-[#98D83E]"
-            />
-            <button
-              type="submit"
-              className="bg-[#98D83E] hover:bg-[#a6eb48] text-[#123517] font-bold text-sm px-6 py-2.5 rounded-lg transition-colors whitespace-nowrap"
-            >
-              Subscribe
-            </button>
-          </form>
+          <NewsletterForm />
         </div>
 
       </div>
