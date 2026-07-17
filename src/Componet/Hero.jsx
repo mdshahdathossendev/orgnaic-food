@@ -1,5 +1,6 @@
 import React from 'react';
 import { Truck, Leaf } from 'lucide-react';
+import Link from 'next/link';
 
 export default function HeroSection() {
   return (
@@ -33,12 +34,16 @@ export default function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 pt-2">
+            <Link href="/shop">
             <button className="bg-[#133F17] hover:bg-[#0D2E10] text-white px-8 py-3.5 rounded-lg font-bold transition-all duration-200 shadow-md">
               Shop Now
             </button>
+            </Link>
+            <Link href="/ai"> 
             <button className="border-2 border-[#133F17] text-[#133F17] hover:bg-[#F1F8E9] px-8 py-3.5 rounded-lg font-bold transition-all duration-200">
-              Meet Our Farmers
+              Question for AI
             </button>
+            </Link>
           </div>
 
           {/* Social Proof (Happy Families) */}
@@ -77,7 +82,7 @@ export default function HeroSection() {
             {/* Card 1: Greens (Kale) */}
             <div className="bg-white p-3 rounded-2xl shadow-sm border border-gray-100">
               <img 
-                src="https://images.unsplash.com/photo-1628773822503-930a84001967?auto=format&fit=crop&w=400&q=80" 
+                src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=500&q=80" 
                 alt="Fresh Kale" 
                 className="rounded-xl w-full h-40 sm:h-48 object-cover"
               />
@@ -105,7 +110,7 @@ export default function HeroSection() {
             {/* Card 3: Citrus Fruit Board */}
             <div className="bg-white p-3 rounded-2xl shadow-sm border border-gray-100">
               <img 
-                src="https://images.unsplash.com/photo-1610832958506-ee5633619144?auto=format&fit=crop&w=400&q=80" 
+                src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=500&q=80" 
                 alt="Citrus fruits" 
                 className="rounded-xl w-full h-44 sm:h-52 object-cover"
               />

@@ -15,6 +15,15 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
+  // Suggested questions
+  const suggestedQuestions = [
+    "What is Organic Meadow?",
+    "Do you offer free delivery?",
+    "What products do you sell?",
+    "How can I contact support?",
+    "Are your products really organic?"
+  ];
+
   // Auto-scroll to bottom of messages
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -24,12 +33,10 @@ export default function ChatPage() {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (!inputText.trim() || isLoading) return;
+  const handleSend = async (text) => {
+    if (!text.trim() || isLoading) return;
 
-    const userMessage = { role: 'user', content: inputText.trim() };
+    const userMessage = { role: 'user', content: text.trim() };
     setMessages(prev => [...prev, userMessage]);
     setInputText('');
     setIsLoading(true);
@@ -41,16 +48,51 @@ export default function ChatPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          messages: [
-            {
-              role: 'system',
-              content: 'You are a helpful assistant for Organic Meadow, an organic food e-commerce store. Be friendly, informative, and focus on organic products, healthy eating, and our store offerings. Use emojis related to nature and food where appropriate.'
-            },
-            ...messages,
-            userMessage
-          ],
-          model: 'llama-3.3-70b-versatile'
-        }),
+      messages: [
+        {
+          role: 'system',
+          content: `You are a friendly, knowledgeable assistant for Organic Meadow, an organic food e-commerce store 🌿. Here's everything you need to know:
+
+About Organic Meadow:
+- We are an online store selling 100% certified organic produce and products
+- Our mission is to deliver fresh, healthy organic food directly to your doorstep
+- We source from trusted local organic farms
+- Our branding uses green colors to reflect nature and sustainability
+
+Website Features:
+- Home page: Hero section with our mission, product showcase
+- Shop page (/shop): Browse all our organic products with filters (categories, search, price sort)
+- Product detail page (/shop/[id]): View product info, add to cart, buy now
+- Cart page (/cart): View cart items, update quantities, see order summary (free delivery on orders over $30)
+- Checkout page (/checkout): Complete your order
+- About page (/about): Learn about our story and farms
+- Contact page (/contact): Get in touch with us
+- FAQ page (/faq): Frequently asked questions
+- Sign in (/sinin) and Sign up (/sinup): Create an account or log in
+- Dashboard (/dashboard): For authenticated users to manage products (add, view, delete)
+
+Products:
+- Categories include Sweetener, Superfood, Spreads, Snacks, Cooking Oil (and more!)
+- All products are 100% organic
+- You can view our product range on the Shop page
+
+FAQs:
+- Q: Do you offer free delivery?
+  A: Yes! We offer free delivery on all orders over $30 🌿
+- Q: Are your products really organic?
+  A: Absolutely! All our products are 100% certified organic!
+- Q: Can I track my order?
+  A: Yes, once your order is placed, you'll receive a confirmation email with tracking details.
+- Q: What if I'm not satisfied with my order?
+  A: We want you to be happy! Please contact our support team and we'll make it right.
+
+Your tone should be friendly, enthusiastic, and helpful. Use emojis like 🌿, 🥬, 🍎, 🥑, 🚚 when appropriate. Always promote organic, healthy living!`
+        },
+        ...messages,
+        userMessage
+      ],
+      model: 'llama-3.3-70b-versatile'
+    }),
       });
 
       const data = await response.json();
@@ -135,9 +177,27 @@ export default function ChatPage() {
         </div>
       </div>
 
+      {/* Suggested Questions */}
+      {messages.length === 1 && !isLoading && (
+        <div className="max-w-4xl mx-auto px-4 pb-4">
+          <p className="text-sm font-semibold text-gray-600 mb-3">Suggested questions:</p>
+          <div className="flex flex-wrap gap-2">
+            {suggestedQuestions.map((question, index) => (
+              <button
+                key={index}
+                onClick={() => handleSend(question)}
+                className="px-4 py-2 bg-white border border-gray-200 text-[#123517] text-sm font-medium rounded-full hover:bg-[#E8F5E9] hover:border-[#123517] transition-colors"
+              >
+                {question}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Input Form */}
       <div className="bg-white border-t border-gray-100 p-4 sticky bottom-0">
-        <form onSubmit={handleSend} className="max-w-4xl mx-auto flex gap-3">
+        <form onSubmit={(e) => { e.preventDefault(); e.stopPropagation(); handleSend(inputText); }} className="max-w-4xl mx-auto flex gap-3">
           <input
             type="text"
             value={inputText}
