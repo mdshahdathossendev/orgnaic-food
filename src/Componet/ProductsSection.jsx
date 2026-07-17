@@ -21,7 +21,7 @@ export default function ProductsSection() {
       setLoading(true);
       setError(null);
       try {
-        const res = await fetch("http://localhost:5000/foods");
+        const res = await fetch("https://bag-house-server.vercel.app/foods");
         if (!res.ok) throw new Error(`Server error: ${res.status}`);
         const data = await res.json();
         setProducts(data);

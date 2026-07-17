@@ -12,7 +12,7 @@ export default function DashboardOverview() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/foods")
+    fetch("https://bag-house-server.vercel.app/foods")
       .then((r) => r.json())
       .then((data) => { setProducts(data); setLoading(false); })
       .catch(() => setLoading(false));
@@ -25,10 +25,10 @@ export default function DashboardOverview() {
   const categories = [...new Set(products.map((p) => p.category).filter(Boolean))].length;
 
   const stats = [
-    { label: "Total Products", value: totalProducts, icon: Package,      color: "bg-blue-50 text-blue-600",   border: "border-blue-100" },
-    { label: "Categories",     value: categories,    icon: PackageSearch, color: "bg-purple-50 text-purple-600", border: "border-purple-100" },
-    { label: "Avg. Price",     value: `$${avgPrice}`, icon: DollarSign,  color: "bg-green-50 text-green-600",  border: "border-green-100" },
-    { label: "Active Listings",value: totalProducts, icon: TrendingUp,   color: "bg-amber-50 text-amber-600",  border: "border-amber-100" },
+    { label: "Total Products", value: totalProducts, icon: Package, color: "bg-blue-50 text-blue-600", border: "border-blue-100" },
+    { label: "Categories", value: categories, icon: PackageSearch, color: "bg-purple-50 text-purple-600", border: "border-purple-100" },
+    { label: "Avg. Price", value: `$${avgPrice}`, icon: DollarSign, color: "bg-green-50 text-green-600", border: "border-green-100" },
+    { label: "Active Listings", value: totalProducts, icon: TrendingUp, color: "bg-amber-50 text-amber-600", border: "border-amber-100" },
   ];
 
   const recent = products.slice(0, 5);

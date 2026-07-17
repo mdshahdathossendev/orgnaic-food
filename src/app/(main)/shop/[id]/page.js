@@ -27,7 +27,7 @@ export default function ProductDetailPage() {
     const fetchProduct = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5000/foods/${id}`);
+        const res = await fetch(`https://bag-house-server.vercel.app/foods/${id}`);
         if (!res.ok) throw new Error("Product not found");
         const data = await res.json();
         setProduct(data);

@@ -21,7 +21,7 @@ export default function ManageProductsPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("http://localhost:5000/foods");
+      const res = await fetch("https://bag-house-server.vercel.app/foods");
       if (!res.ok) throw new Error("Failed to load products");
       const data = await res.json();
       setProducts(data);
@@ -37,7 +37,7 @@ export default function ManageProductsPage() {
   const handleDelete = async (id) => {
     setDeletingId(id);
     try {
-      const res = await fetch(`http://localhost:5000/foods/${id}`, { method: "DELETE" });
+      const res = await fetch(`https://bag-house-server.vercel.app/foods/${id}`, { method: "DELETE" });
       if (!res.ok) throw new Error("Delete failed");
       setProducts((prev) => prev.filter((p) => p._id !== id));
     } catch (err) {

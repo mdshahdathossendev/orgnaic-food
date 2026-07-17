@@ -22,16 +22,16 @@ export default function AddProductPage() {
 
     const form = e.currentTarget;
     const body = {
-      name:        form.name_field.value.trim(),
-      category:    form.category.value.trim(),
-      price:       Number(form.price.value),
-      unit:        form.unit.value.trim(),
+      name: form.name_field.value.trim(),
+      category: form.category.value.trim(),
+      price: Number(form.price.value),
+      unit: form.unit.value.trim(),
       description: form.description.value.trim(),
-      images:      imageInputs.filter((url) => url.trim() !== ""),
+      images: imageInputs.filter((url) => url.trim() !== ""),
     };
 
     try {
-      const res = await fetch("http://localhost:5000/foods", {
+      const res = await fetch("https://bag-house-server.vercel.app/foods", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
