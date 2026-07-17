@@ -13,7 +13,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   const { data: session, isPending } = authClient.useSession();
-  const { cartCount } = useCart();
+  const { cartCount, isMounted } = useCart();
 
   const handleSignOut = async () => {
     await authClient.signOut({
@@ -25,8 +25,9 @@ export default function Navbar() {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Shop", href: "/shop" },
+    { name: "Chat AI", href: "/ai" },
     { name: "About Us", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    
   ];
 
   return (
@@ -67,7 +68,7 @@ export default function Navbar() {
           
           <Link href="/cart" className="relative p-2 text-gray-500 hover:text-[#1B431C] hover:bg-gray-100/50 rounded-full transition-colors">
             <ShoppingBag className="w-5 h-5" />
-            {cartCount > 0 && (
+            {isMounted && cartCount > 0 && (
               <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#98D83E] text-[10px] font-bold text-[#123517]">
                 {cartCount > 9 ? "9+" : cartCount}
               </span>
@@ -134,7 +135,7 @@ export default function Navbar() {
         <div className="flex md:hidden items-center gap-4">
           <Link href="/cart" className="relative p-2 text-gray-500 hover:text-[#1B431C]">
             <ShoppingBag className="w-5 h-5" />
-            {cartCount > 0 && (
+            {isMounted && cartCount > 0 && (
               <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full bg-[#98D83E] text-[10px] font-bold text-[#123517]">
                 {cartCount > 9 ? "9+" : cartCount}
               </span>

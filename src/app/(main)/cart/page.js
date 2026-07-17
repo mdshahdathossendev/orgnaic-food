@@ -5,9 +5,9 @@ import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, Leaf } from "lucide-react
 import Link from "next/link";
 
 export default function CartPage() {
-  const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useCart();
+  const { cart, removeFromCart, updateQuantity, cartTotal, clearCart, isMounted } = useCart();
 
-  if (cart.length === 0) {
+  if (!isMounted || cart.length === 0) {
     return (
       <div className="bg-[#FCFBF7] min-h-[70vh] flex flex-col items-center justify-center gap-5 px-6">
         <div className="p-6 bg-[#E8F5E9] rounded-full">

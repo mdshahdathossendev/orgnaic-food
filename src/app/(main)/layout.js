@@ -1,5 +1,6 @@
 import Navbar from "@/Componet/Navber";
 import Footer from "@/Componet/Footer";
+import FloatingChatButton from "@/Componet/FloatingChatButton";
 import { CartProvider } from "@/context/CartContext";
 
 export default function MainLayout({ children }) {
@@ -11,6 +12,7 @@ export default function MainLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <FloatingChatButton />
       </div>
     </CartProvider>
   );
