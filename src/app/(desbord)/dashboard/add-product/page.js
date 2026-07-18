@@ -27,6 +27,7 @@ export default function AddProductPage() {
       price: Number(form.price.value),
       unit: form.unit.value.trim(),
       description: form.description.value.trim(),
+      long_description: form.long_description.value.trim(),
       images: imageInputs.filter((url) => url.trim() !== ""),
     };
 
@@ -110,8 +111,15 @@ export default function AddProductPage() {
 
         {/* Description */}
         <div>
-          <label className="block text-xs font-bold text-gray-700 mb-1.5" htmlFor="description">Description</label>
-          <textarea id="description" name="description" rows={3} placeholder="Describe the product..."
+          <label className="block text-xs font-bold text-gray-700 mb-1.5" htmlFor="description">Short Description</label>
+          <textarea id="description" name="description" rows={3} placeholder="Brief description of the product..."
+            className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm outline-none focus:border-[#1B5E20] focus:ring-1 focus:ring-[#1B5E20] transition resize-none" />
+        </div>
+
+        {/* Long Description */}
+        <div>
+          <label className="block text-xs font-bold text-gray-700 mb-1.5" htmlFor="long_description">Long Description</label>
+          <textarea id="long_description" name="long_description" rows={6} placeholder="Add a detailed, long description of the product..."
             className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm outline-none focus:border-[#1B5E20] focus:ring-1 focus:ring-[#1B5E20] transition resize-none" />
         </div>
 
