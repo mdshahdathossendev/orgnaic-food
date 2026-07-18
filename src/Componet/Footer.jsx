@@ -30,7 +30,7 @@ export default function Footer() {
               <a href="tel:+8801937008534" className="h-9 w-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-[#98D83E] hover:text-[#123517] transition-all duration-200" aria-label="Call">
                 <Phone className="w-4 h-4" />
               </a>
-              <a href="mailto:hmdshahdat@gamil.com" className="h-9 w-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-[#98D83E] hover:text-[#123517] transition-all duration-200" aria-label="Email">
+              <a href="mailto:hmdshahdat@gmail.com" className="h-9 w-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-[#98D83E] hover:text-[#123517] transition-all duration-200" aria-label="Email">
                 <Mail className="w-4 h-4" />
               </a>
               <a href="https://organicmeadow.com" target="_blank" rel="noopener noreferrer" className="h-9 w-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-[#98D83E] hover:text-[#123517] transition-all duration-200" aria-label="Website">
@@ -83,13 +83,13 @@ export default function Footer() {
             
             {/* Direct Contact Info */}
             <div className="space-y-2 pt-2 text-xs text-gray-300">
-              <a href="tel:+15550192834" className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href="tel:+8801937008534" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Phone className="w-4 h-4 text-[#98D83E]" />
-                <span>+1 (555) 019-2834</span>
+                <span>+880 1937-008534</span>
               </a>
-              <a href="mailto:support@organicmeadow.com" className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href="mailto:hmdshahdat@gmail.com" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Mail className="w-4 h-4 text-[#98D83E]" />
-                <span>support@organicmeadow.com</span>
+                <span>hmdshahdat@gmail.com</span>
               </a>
               <a href="https://organicmeadow.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-white transition-colors">
                 <Globe className="w-4 h-4 text-[#98D83E]" />

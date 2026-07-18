@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { SlidersHorizontal, Search, Loader2, PackageSearch, Leaf } from "lucide-react";
 import ProductCard from "./ProductCard";
 
@@ -8,7 +8,6 @@ const CATEGORIES = ["All", "Sweetener", "Superfood", "Spreads", "Snacks", "Cooki
 
 export default function ProductsSection() {
   const [products, setProducts] = useState([]);
-  const [filtered, setFiltered] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -25,7 +24,6 @@ export default function ProductsSection() {
         if (!res.ok) throw new Error(`Server error: ${res.status}`);
         const data = await res.json();
         setProducts(data);
-        setFiltered(data);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -35,8 +33,8 @@ export default function ProductsSection() {
     fetchProducts();
   }, []);
 
-  // Filter + sort whenever dependencies change
-  useEffect(() => {
+  // Filter + sort whenever dependencies change - use useMemo instead of useEffect + useState
+  const filtered = useMemo(() => {
     let result = [...products];
 
     // Filter by category
@@ -63,7 +61,7 @@ export default function ProductsSection() {
     else if (sortBy === "price-desc") result.sort((a, b) => b.price - a.price);
     else if (sortBy === "name") result.sort((a, b) => a.name?.localeCompare(b.name));
 
-    setFiltered(result);
+    return result;
   }, [products, searchQuery, activeCategory, sortBy]);
 
   return (

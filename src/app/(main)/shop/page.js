@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProductsSection from "@/Componet/ProductsSection";
 
 export const metadata = {
@@ -23,7 +24,7 @@ export default function ShopPage() {
 
           {/* Breadcrumb */}
           <nav className="mt-5 flex items-center gap-2 text-xs text-gray-400">
-            <a href="/" className="hover:text-[#98D83E] transition-colors">Home</a>
+            <Link href="/" className="hover:text-[#98D83E] transition-colors">Home</Link>
             <span>/</span>
             <span className="text-[#98D83E] font-semibold">Shop</span>
           </nav>
