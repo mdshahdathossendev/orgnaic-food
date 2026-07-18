@@ -183,12 +183,51 @@ export default function ProductDetailPage() {
               )}
             </div>
 
-            {/* Description */}
-            {product.description && (
-              <p className="text-gray-600 text-base leading-relaxed border-t border-gray-100 pt-4">
-                {product.description}
-              </p>
-            )}
+            {/* Detailed Description Section */}
+            <div className="space-y-6 border-t border-gray-100 pt-6">
+              {/* Main Description */}
+              <div>
+                <h3 className="text-lg font-bold text-[#1B431C] mb-3">About this Product</h3>
+                <p className="text-gray-600 text-base leading-relaxed">
+                  {product.long_description || product.description || "Experience the pure, fresh taste of our organically grown produce, carefully harvested from trusted local farms that prioritize sustainable agriculture and environmental stewardship."}
+                </p>
+              </div>
+
+              {/* Key Features */}
+              <div>
+                <h3 className="text-lg font-bold text-[#1B431C] mb-3">Why You'll Love It</h3>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li className="flex items-start gap-2">
+                    <Leaf className="w-4 h-4 text-[#689F38] shrink-0 mt-0.5" />
+                    <span>100% certified organic, free from synthetic pesticides and fertilizers</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Leaf className="w-4 h-4 text-[#689F38] shrink-0 mt-0.5" />
+                    <span>Freshly harvested to order for maximum flavor and nutritional value</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Leaf className="w-4 h-4 text-[#689F38] shrink-0 mt-0.5" />
+                    <span>Support local farmers committed to sustainable farming practices</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Leaf className="w-4 h-4 text-[#689F38] shrink-0 mt-0.5" />
+                    <span>Carefully packed to ensure safe delivery to your doorstep</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Origin & Storage Info */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                  <h4 className="text-sm font-bold text-[#1B431C] mb-1">Origin</h4>
+                  <p className="text-xs text-gray-500">{product.origin || "Local sustainable farm, USA"}</p>
+                </div>
+                <div className="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+                  <h4 className="text-sm font-bold text-[#1B431C] mb-1">Storage</h4>
+                  <p className="text-xs text-gray-500">{product.storage || "Refrigerate for up to 7 days for optimal freshness"}</p>
+                </div>
+              </div>
+            </div>
 
             {/* Quantity Selector */}
             <div className="flex items-center gap-4">
