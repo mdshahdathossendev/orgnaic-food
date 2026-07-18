@@ -3,9 +3,10 @@
 import React from 'react';
 import { Leaf, User, Link as LinkIcon } from 'lucide-react';
 import { authClient } from '@/lib/auth-clinet';
+import { useRouter } from 'next/navigation';
 
 export default function SignUpPage() {
-  
+  const router = useRouter();
   // Handling form data submission without React useState
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,15 +29,11 @@ export default function SignUpPage() {
       email: email,
       password: password,
       image: imageUrl || undefined,
-      callbackURL: '/',
     });
-
-    if (error) {
-      console.error('Sign up error:', error);
-      alert(error.message || 'Sign up failed!');
-    } else {
-      console.log('Account created successfully:', data);
-    }
+   
+    if (!error) {
+      router.push('/');
+    } 
   };
 
   const handleGoogleSignUp = async () => {
