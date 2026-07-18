@@ -13,7 +13,7 @@ export default function ChatPage() {
   ]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const messagesEndRef = useRef(null);
+  const messagesContainerRef = useRef(null);
 
   // Suggested questions
   const suggestedQuestions = [
@@ -24,9 +24,11 @@ export default function ChatPage() {
     "Are your products really organic?"
   ];
 
-  // Auto-scroll to bottom of messages
+  // Auto-scroll to bottom of messages container
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -134,7 +136,7 @@ Your tone should be friendly, enthusiastic, and helpful. Use emojis like ðŸŒ¿, ð
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 overflow-y-auto p-4">
+      <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-4">
         <div className="max-w-4xl mx-auto space-y-4">
           {messages.map((msg, index) => (
             <div
@@ -173,7 +175,6 @@ Your tone should be friendly, enthusiastic, and helpful. Use emojis like ðŸŒ¿, ð
               </div>
             </div>
           )}
-          <div ref={messagesEndRef} />
         </div>
       </div>
 
